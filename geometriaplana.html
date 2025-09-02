@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometria plana</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+     
+        /* Botão de Voltar */
+          .btn-voltar {
+              background-color: #e65d6f;
+              color: white;
+              font-size: 16px;
+              font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+              padding: 12px 25px;
+              border: none;
+              border-radius: 5px;
+              margin-top: 30px;
+              text-decoration: none;
+              transition: background-color 0.3s ease;
+          }
+  
+          .btn-voltar:hover {
+              background-color: #e21251;
+          }
+  
+
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    }
+
+
+
+
+    /* Cabeçalho */
+    header {
+      background-color: #ffffff;
+      color: rgb(117, 117, 117);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-nome {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-nome img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .slogan {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .pesquisa {
+      max-width: 250px;
+    }
+
+    .pesquisa input {
+      padding: 5px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    /* Seções */
+    section {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .blocos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    justify-items: center;
+    }
+
+    .bloco {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 250px;
+      height: 20vh;
+      min-height: 150px;
+      max-height: 300px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    
+    .blocopersonalizado {
+      background-color: rgb(117, 178, 222);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 200px;
+      height: 20vh;
+      min-height: 90px;
+      max-height: 130px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .bloco:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 30px 20px;
+      background-color: #e9e9e9;
+    }
+
+    /* para definir o tamanho do carrosel*/
+   .carrossel-personalizado {
+  width: 100%;
+  max-height: 400px; /* opcional, limite máximo */
+  overflow: hidden;
+}
+
+.carrossel-personalizado .carousel-item img {
+  width: 100%;
+  height: auto; /* ajusta automaticamente a altura */
+  object-fit: cover; /* mantém o corte proporcional */
+  max-height: 400px; /* opcional */
+}
+  /* cards*/
+  .card h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card p {
+  margin: 0;
+}
+   
+  /* mudar cor bootstrap*/
+  .personalizado {
+  background-color: #e21250c9; /* azul escuro */
+  color: white;
+  font-family: 'Verdana', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.personalizado:hover {
+  background-color: #e21251; /* azul mais claro ao passar o mouse */
+}
+
+footer .text-dark {
+  color: #2273d0 !important;
+}
+
+ /* ===== MODO ESCURO ===== */  
+    body.dark-mode {
+      background: #121212;
+      color: #f1f1f1;
+    }
+    body.dark-mode header {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+    body.dark-mode .bloco {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+    }
+    body.dark-mode footer {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    body.dark-mode a { color: #9ecbff; }
+    body.dark-mode .personalizado {
+      background-color: #e65d6f;
+    }
+    body.dark-mode .personalizado:hover {
+      background-color: #e21251;
+    }
+
+    .bg-piclass {
+        background-color: #f8f9fa; /* cor clara padrão */
+        transition: background-color 0.3s;
+    }
+    body.dark-mode .bg-piclass {
+        background-color: #232323; /* cor escura para modo escuro */
+    }
+  </style>
+</head>
+<body>
+    <!-- Botão de Voltar -->
+    <div class="text-start">
+        <a href="oquemaiscai.html" class="btn-voltar">Voltar</a>
+    </div>
+
+ <!-- Cabeçalho -->
+  <header>
+    <div class="logo-nome"> 
+      <img src="img/logosemfundo.png" alt="Logo">
+    </div>
+    <div class="slogan">πclass — o principal pilar do seu aprendizado</div>
+    <button class="modo-btn" id="toggleModo">🌙 Modo Escuro</button>
+  </header>
+
+  
+<!-- Banner/Carrossel -->
+<div id="bannerpiclass" class="carousel slide carrossel-personalizado" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/capapicles.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/piclasssssssss.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Transforme.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Matemática sem dor de cabeça..png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/teste54.png" class=" d-block w-100">
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#bannerpiclass" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bannerpiclass" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>
+ 
+    <!--CONTEUDO GEOMETRIA PLANA-->
+
+<div class="container my-5">
+  <h1 class="text-center mb-4">Geometria plana</h1>
+
+  <p class="lead">
+    Características e propriedades específicas de cada figura geométrica plana, precisa ter conhecimento do que se refere a todo paralelogramo possuir lados opostos congruentes e fórmulas de área e perímetro.
+</p>
+ 
+  <h3 class="mt-4">1 – Definição, características e classificação dos triângulos;
+</h3>
+  <p>
+    Um triângulo é um polígono de três lados, três vértices e três ângulos. Normalmente os vértices são representados por letras maiúsculas do nosso alfabeto, e a medida dos lados é representada por letras minúsculas. Já os ângulos são representados por letras do alfabeto grego.
+  </p>
+<p>Existem elementos e propriedades comuns a todos os triângulos, que são:</p>
+<ul>
+    <li>O triângulo não possui diagonal.</li>
+    <li>O triângulo possui três ângulos externos cuja soma é sempre igual a 360º.</li>
+    <li>A soma dos ângulos internos (Si) é sempre igual a 180º.</li>
+    <li>A soma de dois lados quaisquer é sempre menor que o terceiro lado.</li>
+    <li>Todo triângulo possui altura, mediana, mediatriz e bissetriz.</li>
+    <li>Todo triângulo possui pontos notáveis importantes: baricentro (encontro das três medianas), circuncentro (encontro das três mediatrizes), incentro (encontro das três bissetrizes) e ortocentro (encontro das três alturas).</li>
+    <li>A área de um triângulo qualquer pode ser calculada pela fórmula: A = (b.h) /2</li>
+</ul>
+
+<p class = "text-center">A: área   b: base  h: altura</p>
+
+<h4 class="mt-4">Classificação dos triângulos</h4>
+<p>Existem duas formas de classificar os triângulos, que são independentes entre si. Uma delas leva em consideração os ângulos – nesse caso, um triângulo pode ser obtusângulo, acutângulo ou retângulo. Já a outra maneira de classificar faz a comparação entre o comprimento de cada um dos lados, com isso um triângulo pode ser escaleno, equilátero ou isósceles.</p>
+
+<p>- Classificação de triângulos quanto aos ângulos</p>
+<p>Ao analisar os ângulos internos do triângulo, chegamos a três casos:</p>
+<p>1. <i>Triângulo acutângulo:</i> Um triângulo é conhecido como acutângulo quando os seus três ângulos são agudos, ou seja, menores que 90º.</p>  
+
+<img src="img/img72.PNG" class="d-block w-100" alt="Imagem 72">
+<br>
+<p>2. <i>Triângulo retângulo:</i> Um triângulo é retângulo quando um de seus ângulos é reto, ou seja, igual a 90º. Como a soma dos três ângulos é sempre igual a 180º, os demais ângulos são necessariamente agudos.</p>  
+
+<img src="img/img73.PNG" class="d-block w-100" alt="Imagem 73">
+<br>
+<p>O triângulo retângulo é muito importante para a Matemática, pois, com base nele, são desenvolvidas relações de grande importância, como as relações trigonométricas no triângulo retângulo e o teorema de Pitágoras. Para saber mais informações sobre esse tipo de triângulo, acesse o nosso texto: triângulo retângulo.</p>
+<p>3. <i>Triângulo obtusângulo: </i> Um triângulo é obtusângulo quando um de seus ângulos é obtuso, ou seja, maior que 90º. Os demais ângulos são necessariamente agudos.</p>  
+
+<img src="img/img74.PNG" class="d-block w-100" alt="Imagem 74">
+<br>
+<p>- Classificação quanto ao lado</p>
+<p>Analisando os lados do triângulo, podemos também separar três casos:</p>
+<p>1. <i>Triângulo escaleno: </i> O triângulo é escaleno quando as medidas dos lados são todas diferentes.</p>  
+
+<img src="img/img75.PNG" class="d-block w-100" alt="Imagem 75">
+<br>
+<p>1. <i>Triângulo isósceles:</i> O triângulo é isósceles quando possui pelo menos dois lados congruentes, ou seja, com a mesma medida. Devido a essa particularidade, o triângulo isósceles possui propriedades específicas, que não são válidas para triângulos escalenos.</p>  
+
+<img src="img/img76.PNG" class="d-block w-100" alt="Imagem 76">
+<br>
+<p>As propriedades específicas do triângulo isósceles são duas, uma em relação ao ângulo e outra em relação à altura.</p>
+<p>- Em triângulos isósceles, os ângulos da base são sempre iguais (tratamos como base o lado que possui medida diferente dos demais lados).</p>
+<img src="img/img77.PNG" class="d-block w-100" alt="Imagem 77">
+<br>
+<p>- Ao traçar a altura h do triângulo isósceles, ela divide a base em duas partes iguais.</p>
+<br>
+<img src="img/img78.PNG" class="d-block w-100" alt="Imagem 78">
+<br>
+<p>Note que os segmentos AM e BM são congruentes, o que significa que M é o ponto médio da base desse triângulo.</p>
+<p>- Triângulo equilátero: O triângulo é equilátero quando possui os três lados com as mesmas medidas. Como consequência, os três ângulos também possuem a mesma medida, que é de 60º. Existem fórmulas específicas para o cálculo de área e de altura desse triângulo, a s quais são deduzidas a partir dos três lados congruentes.</p>
+<img src="img/img79.PNG" class="d-block w-100" alt="Imagem 79">
+<br>
+<p>No triângulo equilátero, as propriedades do triângulo isósceles também são válidas, afinal, ele possui mais de dois lados iguais. Além disso, conhecendo o lado do triângulo equilátero, podemos encontrar a altura e a sua área pelas fórmulas a seguir:</p>
+<img src="img/img80.PNG" class="d-block w-100" alt="Imagem 80">
+
+<h3 class="mt-4">2 – Definição, características e classificação dos quadriláteros;</h3>
+<i>Resumo sobre quadriláteros</i>
+<p> - Polígonos com quatro lados são quadriláteros.</p>
+<p> - Os três elementos básicos que constituem os quadriláteros são os lados, os vértices e os ângulos internos.</p>
+<ul>
+    <li>Lados são os segmentos de reta que delimitam o quadrilátero.</li>
+    <li>Vértices são os pontos em que dois lados se encontram.</li>
+    <li>Ângulos internos são as aberturas formadas por dois lados adjacentes</li>
+</ul>
+<img src="img/img81.PNG" class="d-block w-100" alt="Imagem 81">
+<br>
+<p>No quadrilátero ABCD, temos que</p>
+<ul>
+    <li>AB, BC, CD e AD são os lados;</li>
+    <li>A, B, C e D são os vértices;</li>
+    <li>Â, ^B, ^C, ^D são os ângulos internos.</li>
+</ul>
+<img src="img/img82.PNG" class="d-block w-100" alt="Imagem 82">
+
+<h3 class="mt-4">3 – Polígonos regulares e convexos;</h3>
+<p>Um polígono é uma região do plano formada pela união de uma linha fechada – que, por sua vez, é formada por segmentos de reta chamados de lados – e todos os pontos interiores a essa linha.</p>
+<p>São exemplos de polígonos os triângulos, os quadrados, os retângulos e os paralelogramos. Além deles, todas as figuras geométricas que seguem o padrão de construção desses exemplos também são polígonos, como é o caso dos pentágonos, hexágonos, heptágonos etc.</p>
+<img src="img/img83.PNG" class="d-block w-100" alt="Imagem 83">
+<p>Não são polígonos, portanto, figuras que apresentam em um de seus lados, no lugar de um segmento de reta, uma curva qualquer ou que dois de seus lados cruzam-se.</p>
+<img src="img/img84.PNG" class="d-block w-100" alt="Imagem 84">
+<p>Um polígono é convexo quando, dados dois pontos A e B quaisquer em seu interior, é impossível enconeiratrar um segmento de reta AB com pelo menos um ponto no exterior do polígono, ou seja, tomando dois pontos A e B dentro de um polígono, se o segmento AB sempre estiver intmente no interior do polígono, independentemente da localização dos pontos A e B, esse polígono será convexo.</p>
+<img src="img/img86.PNG" class="d-block w-100" alt="Imagem 86">
+
+<h3 class="mt-4">4 – Área e perímetro de círculos (comprimento da circunferência).</h3>
+
+<h4 class="mt-4">Resumo sobre comprimento de uma circunferência</h4>
+<ul>
+    <li>A medida do contorno de uma circunferência é conhecida como o comprimento da circunferência.</li>
+    <li>A relação entre uma circunferência e seu comprimento pode ser associada à relação entre um polígono e seu perímetro.</li>
+    <li>A fórmula para calcular o comprimento C de uma circunferência de raio r é</li>
+</ul>
+
+<p class = "text-center">C=2πr</p>
+
+<h4 class="mt-4">O que é comprimento da circunferência?</h4>
+<p>O comprimento de uma circunferência é a medida do contorno dessa figura. Lembre-se de que uma circunferência é formada por um conjunto de pontos que possuem a mesma distância de determinado ponto, chamado de centro. Essa distância é chamada de raio, e o dobro do raio é chamado de diâmetro.</p>
+<img src="img/img87.PNG" class="d-block w-100" alt="Imagem 87">
+<br>
+<p><i>Importante:</i> Alguns textos se referem ao comprimento da circunferência como perímetro do círculo, pois o contorno (ou borda) de um círculo de raio r é uma circunferência de raio r.</p>
+
+<h4 class="mt-4">Como se calcula o comprimento da circunferência?</h4>
+<p>Para calcular o comprimento C de uma circunferência de raio r, utilizamos a seguinte fórmula:</p>
+<p class = "text-center">C=2πr</p>
+<p>Alguns textos apresentam essa expressão na forma C=dπ, em que d é o diâmetro da circunferência. Perceba que podemos escrever C=2πr como C=2rπ, ou seja, C=dπ</p>
+<p><i>Importante:</i> O comprimento de uma circunferência deve ser expresso na mesma unidade de medida que o raio dessa circunferência.</p>
+
+<i>Exemplo:</i>
+<p>Qual o comprimento de uma circunferência com 4 cm de raio? (Considere π = 3)</p>
+
+<i>Resolução:Resolução:</i>
+<p>Aplicando a fórmula para r = 4 cm e realizando a aproximação indicada para o valor de π, temos que</p>
+<p class = "text-center">C= 2πr = 2⋅3⋅4 = 24 cm</p>
+
+<h4 class="mt-4">Outros temas sobre geometria plana</h4>
+<p>Existem alguns conteúdos da geometria plana que convém serem estudados em uma segunda etapa. Depois de conhecer as definições, características e propriedades básicas dos triângulos em uma etapa de aprofundamento dos conhecimentos, é bom focar em seguida no estudo dessas figuras porque elas possuem uma grande quantidade de propriedades.</p>
+<p>Sobre os triângulos existem os seguintes conhecimentos:</p>
+
+<h5 class="mt-4">1 – Teorema de Pitágoras;</h5>
+<p>O teorema de Pitágoras é uma relação entre as medidas dos lados de um triângulo retângulo. De acordo com esse teorema, o quadrado da medida da hipotenusa é igual à soma dos quadrados das medidas dos catetos. Ou seja, se os catetos medem a e b e a hipotenusa mede c, então <i>c^2=a^2+b^2.</i></p>
+<img src="img/img88.PNG" class="d-block w-100" alt="Imagem 88">
+
+<p>Utilizamos o teorema de Pitágoras em diversos estudos geométricos, inclusive para provar outros teoremas matemáticos. Neste texto, porém, vamos nos concentrar em sua aplicação mais direta, que é determinar um dos lados de um triângulo retângulo por meio dos outros dois.</p>
+<i>Exemplo:</i>
+<p>Determine o valor de x no triângulo retângulo abaixo.</p>
+<img src="img/imh89.PNG" class="d-block w-100" alt="Imagem 89">
+<br>
+<i>Resolução:</i>
+<p>Perceba que x é a medida da hipotenusa. Assim, pelo teorema de Pitágoras:</p>
+<p class = "text-center">x^2=6^2+8^2</p>
+<p class = "text-center">x=10 cm</p>
+
+<h5 class="mt-4">2 – Trigonometria no triângulo retângulo;</h5>
+<i>Relações Trigonométricas do Triângulo Retângulo</i>
+<p>As razões trigonométricas são as relações existentes entre os lados de um triângulo retângulo. As principais são o seno, o cosseno e a tangente.</p>
+<img src="img/img90.PNG" class="d-block w-100" alt="Imagem 90">
+
+<h5 class="mt-4">3 – Semelhança de triângulos;</h5>
+<p>Como nos triângulos semelhantes os lados homólogos são proporcionais, o resultado da divisão desses lados será um valor constante. Esse valor é chamado de razão de proporcionalidade.</p>
+<p>Considere os triângulos ABC e EFG semelhantes, representados na figura abaixo:</p>
+<img src="img/img91.PNG" class="d-block w-100" alt="Imagem 91">
+
+<h5 class="mt-4">Casos de Semelhança</h5>
+<p>Para identificar se dois triângulos são semelhantes, basta verificar alguns elementos.</p>
+<br>
+<p><i>1º Caso:</i> Dois triângulos são semelhantes se dois ângulos de um são congruentes a dois do outro. Critério AA (Ângulo, Ângulo).</p>
+<p><i>2º Caso:</i> Dois triângulos são semelhantes se os três lados de um são proporcionais aos três lados do outro. Critério LLL (Lado, Lado, Lado).</p>
+<p><i>3º Caso:</i> Dois triângulos são semelhantes se possuem um ângulo congruente compreendido entre lados proporcionais. Critério LAL (Lado, Ângulo, Lado).</p>
+
+<h5 class="mt-4">4 – Definição e propriedades da mediana, bissetriz e altura do triângulo.</h5>
+<p>Sabemos que os elementos básicos de um triângulo são: os vértices, os lados e os ângulos, mas não são os únicos. Em um triângulo identificamos outros elementos, como mediana, bissetriz e altura.</p>
+<p>Vértices, lados e ângulos.</p>
+<img src="img/img92.PNG" class="d-block w-100" alt="Imagem 92">
+<img src="img/img93.PNG" class="d-block w-100" alt="Imagem 93">
+
+
+
+<!--VIDEOAULAS----------------------------------------------------------------->
+
+<h2 class="mt-5 text-center">VIDEOAULAS:</h2>
+
+<p>Seleção de videoaulas sobre esse assunto com ótimos professores que os ofertam gratuitamente na internet:</p>
+
+<div class="container mt-5 text-center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/EzGf1UEnnsY?si=7b8bpsffAkZ7sLqG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/th5k6bzSDTA?si=8BptrbNDbmcLcPK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/0CnUdzmpO8E?si=D5plSo5QzvlZ3tZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/BTgdAgDLcxI?si=HlCvKhy0xzS0vFq1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+
+<!--QUESTOES-------------------------------------------------------------------->
+
+<h2 class="mt-5 text-center">QUESTÕES:</h2>
+  <p class="text-align">1. (Enem 2017) Um fabricante recomenda que, para cada m² do ambiente a ser climatizado, são necessários 800 BTUh, desde que haja até duas pessoas no ambiente. A esse número devem ser acrescentados 600 BTUh para cada pessoa a mais, e também para cada aparelho eletrônico emissor de calor no ambiente. A seguir, encontram-se as cinco opções de aparelhos desse fabricante e suas respectivas capacidades térmicas:
+</p>
+ <ul>
+        <li>Tipo I: 10 500 BTUh</li>
+        <li>Tipo II: 11 000 BTUh</li>
+        <li>Tipo III: 11 500 BTUh</li>
+        <li>Tipo IV: 12 000 BTUh</li>
+        <li>Tipo V: 12 500 BTUh</li>
+    </ul>
+<p>O supervisor de um laboratório precisa comprar um aparelho para climatizar o ambiente. Nele ficarão duas pessoas mais uma centrífuga que emite calor. O laboratório tem forma de trapézio retângulo, com as medidas apresentadas na figura.
+</p>
+<img src="img/img94.PNG" class="d-block w-100" alt="Imagem 94">
+<p>Para economizar energia, o supervisor deverá escolher o aparelho de menor capacidade térmica que atenda às necessidades do laboratório e às recomendações do fabricante.</p>
+<p>A escolha do supervisor recairá sobre o aparelho do tipo</p>
+
+a) I.
+<br>
+b) II.
+<br>
+c) III.
+<br>
+d) IV.
+<br>
+e) V.
+<br>
+<br>
+    <p>2. (Enem 2016)  Um senhor, pai de dois filhos, deseja comprar dois terrenos, com áreas de mesma medida, um para cada filho. Um dos terrenos visitados já está demarcado e, embora não tenha um formato convencional (como se observa na Figura B), agradou ao filho mais velho e, por isso, foi comprado. O filho mais novo possui um projeto arquitetônico de uma casa que quer construir, mas, para isso, precisa de um terreno na forma retangular (como mostrado na Figura A) cujo comprimento seja  7 m  maior do que a largura.
+    </p>
+<img src="img/img95.PNG" class="d-block w-100" alt="Imagem 95">
+
+<p>Para satisfazer o filho mais novo, esse senhor precisa encontrar um terreno retangular cujas medidas, em metro, do comprimento e da largura sejam iguais, respectivamente, a </p>
+
+A) 7,5 e 14,5.
+<br>  
+B) 9,0 e 16,0.  
+<br>
+C) 9,39,3 e 16,3.  
+<br>
+D) 10,0 e 17,0.  
+<br>
+E) 13,5 e 20,5.
+<br>
+<br>
+<p>3. (Enem 2018) Um brinquedo chamado pula-pula, quando visto de cima, consiste de uma cama elástica com contorno em formato de um hexágono regular.
+    </p>
+<img src="img/img96.PNG" class="d-block w-100" alt="Imagem 96">
+
+<p>Se a área do círculo inscrito no hexágono é 3π metros quadrados, então a área do hexágono, em metro quadrado, é: </p>
+
+A) 9
+<br>  
+B) 6√3  
+<br>
+C) 9√2   
+<br>
+D) 12   
+<br>
+E) 12√3
+   
+<h2 class="mt-5 text-center">GABARITO:</h2>
+<i>1. Letra C</i>
+<p>Primeiro calcularemos a área do ambiente, que é um trapézio de base maior medindo 3,8 metros, base menor medindo 3 metros e altura de 4 metros. A fórmula a seguir é utilizada para calcular a área de um trapézio.
+</p>
+
+<img src="img/img97.PNG" class="d-block w-100" alt="Imagem 97">
+
+<p>Para cada m², são recomendados 800 BTUh, logo, serão 13,6 · 800 = 10.880 BTUh para climatizar o ambiente. Além disso, especifica-se que, no caso de objetos que transmitem calor, é necessário acrescentar 600 BTUh. No caso, há uma centrífuga nesse ambiente, então, somaremos:</p>
+
+<p class = "text-center">10.880 + 600 = 11.480 BTUh</p>
+<p>Nesse caso, o supervisor escolherá o aparelho III.</p>
+
+<i>2. letra B</i>
+<p>Primeiro calcularemos a área da figura B. Podemos dividir essa área em dois triângulos retângulos, o primeiro com base igual a 3 m e altura igual a 21 m e o segundo com base e altura iguais a 15 m, então, temos que:</p>
+
+<p class = "text-center">A = (15 ⸳ 15) : 2 + (3 ⸳ 21) : 2 = 112,5 + 31,5 = 144
+</p>
+<p>Por outro lado, sabemos que as áreas são as mesmas, então, temos que:</p>
+<p class = "text-center">x (x + 7) = 144</p>
+<p>Analisando os divisores de 144, temos que 9 ⸳ (9 + 7) = 9 ⸳ 16 = 144.</p>
+<p>Nesse caso, temos que x = 9 e x + 7 = 16.</p>
+
+<i>3. Letra B</i>
+<p>Primeiro encontraremos o raio da circunferência que coincide com a altura do triângulo mostrado na imagem.</p>
+
+<p class = "text-center">A = πr²</p>
+
+<p>Sabemos que a área é igual a 3π:</p>
+
+<p class = "text-center">3π = πr²</p>
+<p class = "text-center">3 = r²</p>
+<p class = "text-center">r = √3</p>
+
+<p>Sabendo o valor do raio, se traçarmos o triângulo AOB, o raio será a sua altura. No hexágono, esse triângulo é sempre equilátero, então, utilizando a fórmula da altura de um triângulo equilátero, temos que:</p>
+<img src="img/img98.PNG" class="d-block w-100" alt="Imagem 98">
+
+<p>Agora que conhecemos o comprimento do lado do hexágono, basta utilizar a fórmula da área do hexágono.</p>
+<img src="img/img99.PNG" class="d-block w-100" alt="Imagem 99">
+
+    
+  <!-- Rodapé -->
+   <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase fw-bold fst-italic">PICLASS</h5>
+                    <p> Melhor isolado de matemática! </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">links úteis</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.instagram.com/plataformapiclass/" class="text-dark">Instagram</a></li>
+                        <li><a href="sobrenos.html" class="text-dark">Sobre Nós</a></li>
+                    </ul>
+                </div>
+                <div class="col"></div>
+                <div class="col-md-auto">
+                    <h5 class="text-uppercase">Converse conosco:</h5>
+                    <ul class="list-unstyled">
+                      <li> contato.piclass@gmail.com</li>
+            
+                    </ul>
+                </div>
+            </div>  
+        </div>
+        <div class="text-center p-3 bg-dark text-white">
+            © 2025 Piclass. Todos os direitos reservados.
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  // Inicialização manual opcional (troca a cada 5s)
+    const el = document.querySelector('#bannerpiclass');
+    const carousel = new bootstrap.Carousel(el, { interval: 5000 });
+ 
+  // Seleciona todos os blocos com atributo data-link
+  document.querySelectorAll('[data-link]').forEach(bloco => {
+    bloco.addEventListener('click', () => {
+      const destino = bloco.getAttribute('data-link');
+      window.location.href = destino;
+    });
+  });
+  // Alternância de modo escuro 
+    const toggleBtn = document.getElementById("toggleModo");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent = 
+        document.body.classList.contains("dark-mode") 
+        ? "☀️ Modo Claro" 
+        : "🌙 Modo Escuro";
+    });
+
+</script>
+</body>
+</html>

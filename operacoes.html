@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações com reais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+ <style>
+      
+        /* Botão de Voltar */
+          .btn-voltar {
+              background-color: #e65d6f;
+              color: white;
+              font-size: 16px;
+              font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+              padding: 12px 25px;
+              border: none;
+              border-radius: 5px;
+              margin-top: 30px;
+              text-decoration: none;
+              transition: background-color 0.3s ease;
+          }
+  
+          .btn-voltar:hover {
+              background-color: #e21251;
+          }
+  
+
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    }
+
+
+
+
+    /* Cabeçalho */
+    header {
+      background-color: #ffffff;
+      color: rgb(117, 117, 117);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-nome {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-nome img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .slogan {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .pesquisa {
+      max-width: 250px;
+    }
+
+    .pesquisa input {
+      padding: 5px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    /* Seções */
+    section {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .blocos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    justify-items: center;
+    }
+
+    .bloco {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 250px;
+      height: 20vh;
+      min-height: 150px;
+      max-height: 300px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    
+    .blocopersonalizado {
+      background-color: rgb(117, 178, 222);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 200px;
+      height: 20vh;
+      min-height: 90px;
+      max-height: 130px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .bloco:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 30px 20px;
+      background-color: #e9e9e9;
+    }
+
+    /* para definir o tamanho do carrosel*/
+   .carrossel-personalizado {
+  width: 100%;
+  max-height: 400px; /* opcional, limite máximo */
+  overflow: hidden;
+}
+
+.carrossel-personalizado .carousel-item img {
+  width: 100%;
+  height: auto; /* ajusta automaticamente a altura */
+  object-fit: cover; /* mantém o corte proporcional */
+  max-height: 400px; /* opcional */
+}
+  /* cards*/
+  .card h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card p {
+  margin: 0;
+}
+   
+  /* mudar cor bootstrap*/
+  .personalizado {
+  background-color: #e21250c9; /* azul escuro */
+  color: white;
+  font-family: 'Verdana', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.personalizado:hover {
+  background-color: #e21251; /* azul mais claro ao passar o mouse */
+}
+
+footer .text-dark {
+  color: #2273d0 !important;
+}
+
+ /* ===== MODO ESCURO ===== */  
+    body.dark-mode {
+      background: #121212;
+      color: #f1f1f1;
+    }
+    body.dark-mode header {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+    body.dark-mode .bloco {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+    }
+    body.dark-mode footer {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    body.dark-mode a { color: #9ecbff; }
+    body.dark-mode .personalizado {
+      background-color: #e65d6f;
+    }
+    body.dark-mode .personalizado:hover {
+      background-color: #e21251;
+    }
+
+    .bg-piclass {
+        background-color: #f8f9fa; /* cor clara padrão */
+        transition: background-color 0.3s;
+    }
+    body.dark-mode .bg-piclass {
+        background-color: #232323; /* cor escura para modo escuro */
+    }
+
+    /* Botão de alternância */
+    .modo-btn {
+      cursor: pointer;	
+
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background: #e39dc7;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .modo-btn:hover { background: #6e6e6e; }
+
+    body.dark-mode .bg-light {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+}
+body.dark-mode .text-dark {
+  color: #9ecbff !important;
+}
+body.dark-mode .text-center {
+  color: #f1f1f1 !important;
+}
+body.dark-mode .fw-bold {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode h2 {
+  color: #f1f1f1 !important;
+}
+   </style>
+</head>
+<body>
+    <!-- Botão de Voltar -->
+   <div class="text-start">
+    <a href="conteudocompleto.html" class="btn-voltar">Voltar</a>
+</div>
+
+ <!-- Cabeçalho -->
+  <header>
+    <div class="logo-nome"> 
+      <img src="img/logosemfundo.png" alt="Logo">
+    </div>
+    <div class="slogan">πclass — o principal pilar do seu aprendizado</div>
+    <button class="modo-btn" id="toggleModo">🌙 Modo Escuro</button>
+  </header>
+
+<!-- Banner/Carrossel -->
+<div id="bannerpiclass" class="carousel slide carrossel-personalizado" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/capapicles.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/piclasssssssss.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Transforme.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Matemática sem dor de cabeça..png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/teste54.png" class=" d-block w-100">
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#bannerpiclass" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bannerpiclass" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>
+
+<!--CONTEUDO ReP-->
+
+<div class="container my-5">
+<h1 class="text-center mb-4">Operações com reais</h1>
+<p>As operações com os números reais não possuem nenhuma divergência em relação às operações com os demais conjuntos. Então, com eles, é possível realizar todas as operações, sendo elas: adição, subtração, multiplicação, potenciação e radiciação.</p>
+
+<h3>Propriedades dos números reais</h3>
+<p>Os números reais possuem algumas propriedades importantes. Veja cada uma delas a seguir.</p>
+
+<h4>→ Existência de um elemento neutro na adição e na multiplicação</h4>
+<p>Considere n um número real.</p>
+<p>Existe um elemento neutro na soma que é o 0.</p>
+<p class = "text-center">n + 0 = n</p>
+<p>Existe um elemento neutro da multiplicação entre números reais que é o 1.</p>
+<p class = "text-center">n · 1 = n</p>
+
+
+<h4>→ Propriedade comutativa</h4>
+<p>Considere n e m números reais.</p>
+<p>Na adição, a ordem das parcelas não altera a soma:</p>
+<p class = "text-center">m + n = n + m</p>
+<p>Na multiplicação, a ordem dos fatores não altera o produto: m · n = n · m</p>
+
+
+<h4>→ Propriedade associativa</h4>
+<p>Considere a, m, n números reais.</p>
+<p>Na adição de três números, não importa quais números serão somados primeiro.</p>
+<p class = "text-center">(a + m) + n = a + (m + n)</p>
+<p>Na multiplicação de três números, não importa quais números serão multiplicados primeiro.</p>
+<p class = "text-center">(a · m) · n = a · (m · n)</p>
+
+
+<h4>→ Propriedade distributiva</h4>
+<p>Considere a, m, n números reais.</p>
+<p>Na propriedade distributiva, temos que o produto da soma é igual à soma dos produtos.</p>
+<p class = "text-center">a (m + n) = am + an</p>
+
+
+<h4>→ Existência de um inverso na multiplicação</h4>
+<p>Considere n um número real diferente de 0.</p>
+<p>Para todo número real n, existe um inverso, 1/n, tal que o produto de n pelo seu inverso 1/n é igual ao elemento neutro da multiplicação:</p>
+<p class = "text-center">n⋅ 1/n =1</p>
+
+
+<h4>→ Fechamento para a adição e para a multiplicação</h4>
+<p>O conjunto dos números reais é fechado para a adição e para a multiplicação, isso quer dizer que:</p>
+<ul>
+    <li>A soma de dois números reais é um número real.</li>
+    <Li>A multiplicação entre dois números reais é um número real.</Li>
+</ul>
+
+<h3>Representação dos números reais na reta numérica</h3>
+<p>Podemos representar os números reais em uma reta, isso possibilita, por exemplo, o desenvolvimento da área da geometria analítica e o estudo de gráficos de funções.</p>
+<p>Para essa representação, utilizamos o princípio da boa ordem dos números reais, pois, ao comparar dois números reais distintos, é possível saber qual deles é o maior e então ordená-los. A representação dos números na reta é conhecida como reta numérica ou reta real. O marco zero é conhecido como origem da reta. Para o lado direito, temos os números reais positivos, e, para o lado esquerdo, os números reais negativos.</p>
+<img src="img/img113.PNG" class="d-block w-100" alt="Imagem 113">
+<br>
+
+<h3>Potenciação</h3>
+<p>Potenciação é a operação matemática utilizada para escrever de forma resumida números muito grandes, onde é feita a multiplicação de n fatores iguais que se repetem.</p>
+<img src="img/img114.PNG" class="d-block w-100" alt="Imagem 114">
+<br>
+<p>Lembre-se!</p>
+<img src="img/img115.PNG" class="d-block w-100" alt="Imagem 115">
+<br>
+<h4>Propriedades da potenciação</h4>
+<br>
+<img src="img/img122.PNG" class="d-block w-100" alt="Imagem 122">
+<img src="img/img123.PNG" class="d-block w-100" alt="Imagem 123">
+<br>
+<h4>Radiciação</h4>
+<img src="img/img116.PNG" class="d-block w-100" alt="Imagem 116">
+<br>
+<h4>Propriedades da radiciação</h4>
+<img src="img/img117.PNG" class="d-block w-100" alt="Imagem 117">
+<img src="img/img118.PNG" class="d-block w-100" alt="Imagem 118">
+<br>
+
+<h3>Como calcular um logaritmo?</h3>
+<p>O logaritmo é um número e representa um dado expoente. Podemos calcular um logaritmo aplicando diretamente a sua definição.</p>
+<i>Exemplo</i>
+<p>Qual o valor do log3 81?</p>
+
+<i>Solução</i>
+<p>Neste exemplo, queremos descobrir qual expoente devemos elevar o 3 para que o resultado seja igual a 81. Usando a definição, temos:</p>
+<p class = "text-center">log3 81 = x ⇔ 3x = 81</p>
+<p>Para encontrar esse valor, podemos fatorar o número 81, conforme indicado abaixo:</p>
+<img src="img/img119.PNG" class="d-block w-100" alt="Imagem 119">
+<p>Substituindo o 81 por sua forma fatorada, na equação anterior, temos:</p>
+<p class = "text-center">3x = 34</p>
+<p>Como as bases são iguais, chegamos a conclusão que x = 4.</p>
+
+<h3>Propriedades dos Logaritmos</h3>
+<img src="img/img120.PNG" class="d-block w-100" alt="Imagem 120">
+<br>
+<i>Exemplos</i>
+<p>1) Escreva os logaritmos abaixo na forma de um único logaritmo.</p>
+<br>
+<p>a) log3 8 + log3 10</p>
+<p>b) 4 log4 3</p>
+<br>
+<i>Exemplos</i>
+<p>a) log3 8 + log3 10 = log3 8.10 = log3 80</p>
+<p>b) 4 log4 3 = log4 34 = log4 81</p>
+
+
+
+<!--VIDEOAULAS--------------------------------------->
+
+<h2 class="mt-5 text-center">VIDEOAULAS:</h2>
+
+<p>Seleção de videoaulas sobre esse assunto com ótimos professores que os ofertam gratuitamente na internet:</p>
+
+<div class="container mt-5 text-center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/IOyR59NRb7M?si=E8g7X3K0NuwiBwFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/4PqECm1OA7U?si=JMNB06q-gnmytwSx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/FzkAWvOAEUI?si=UdZTLMoOq_m9dzEQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/YDjI1vmaplE?si=N5VfMYjdLC6u_0fO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/64D4nwCEosc?si=aahRBcc9LcLmkm3N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/oJx5IbJYYfQ?si=Ni_n2A-lC_4PO1Qv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/tR6S4dz6UGA?si=JKpCcgCPzxdnlilK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--QUESTOES----------------------------------------->
+
+<h2 class="mt-5 text-center">QUESTÕES:</h2>
+<br>
+<p class="text-align">1. Se x = -2, y = 5x  e  z = 5, = então o valor numérico da expressão E= (x^3 - x^4 - y^0)/ √z é igual a: </p>
+
+<br>
+<p>A. 5 √5 </p>
+<p>B. √5 </p>
+<p>C. −5 √5 </p>
+<p>D. − √5</p>
+
+<br>
+<p class="text-align">2. A Escala de Magnitude de Momento (abreviada como MMS e denotada como MW ), introduzida em 1979 por Thomas Haks e Hiroo Kanamori, substituiu a Escala de Richter para medir a magnitude dos terremotos em termos de energia liberada. Menos conhecida pelo público, a MMS é, no entanto, a escala usada para estimar as magnitudes de todos os grandes terremotos da atualidade. Assim como a escala Richter, a MMS é uma escala logarítmica. MW e M0 se relacionam pela fórmula: </p>
+<p class = "text-center">MW = -10,7 + ⅔  log (M0)</p>
+<p>Onde M0 é o momento sísmico (usualmente estimado a partir dos registros de movimento da superfície, através dos sismogramas), cuja unidade é o dina.cm. O terremoto de Kobe, acontecido no dia 17 de janeiro de 1995, foi um dos terremotos que causaram maior impacto no Japão e na comunidade científica internacional. Teve magnitude </p>
+<p class = "text-center">MW = 7,3.</p>
+<p>Mostrando que é possível determinar a medida por meio de conhecimentos matemáticos, qual foi o momento sísmico M0 do terremoto de Kobe (em dina.cm)? </p>
+
+<p>a) 10^ -5,10</p>
+<p>b) 10^ −0,73 </p>
+<p>c) 10^ 12,00</p>
+<p>d) 10^ 21,65</p>
+<p>e) 10^ 27,00</p>
+
+
+
+<h2 class="mt-5 text-center">GABARITO:</h2>
+<i>1. Resposta: C</i>
+<p class = "text-center">E = (x^3 - x^4 - y ^0) / √z = [(-2)^3 - (-2)^4 - 1] / √5 = -25/√5 </p>
+<p class = "text-center">= - 25/√5 . √5 / √5 = -5 √5</p>
+
+<i>2. Resposta: E</i>
+<p>Fazendo M + w + = 7,3, temos: </p>
+<p class = "text-center">7,3 = -10,7 + ⅔ . log M0</p>
+<p class = "text-center">18 = ⅔ . log M0</p>
+<p class = "text-center">27 = log M0</p>
+<p class = "text-center">M0 = 10^27</p>
+</div>
+
+
+    
+
+  <!-- Rodapé -->
+   <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase fw-bold fst-italic">PICLASS</h5>
+                    <p> Melhor isolado de matemática! </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">links úteis</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.instagram.com/plataformapiclass/" class="text-dark">Instagram</a></li>
+                        <li><a href="sobrenos.html" class="text-dark">Sobre Nós</a></li>
+                    </ul>
+                </div>
+                <div class="col"></div>
+                <div class="col-md-auto">
+                    <h5 class="text-uppercase">Converse conosco:</h5>
+                    <ul class="list-unstyled">
+                      <li> contato.piclass@gmail.com</li>
+            
+                    </ul>
+                </div>
+            </div>  
+        </div>
+        <div class="text-center p-3 bg-dark text-white">
+            © 2025 Piclass. Todos os direitos reservados.
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  // Inicialização manual opcional (troca a cada 5s)
+    const el = document.querySelector('#bannerpiclass');
+    const carousel = new bootstrap.Carousel(el, { interval: 5000 });
+ 
+  // Seleciona todos os blocos com atributo data-link
+  document.querySelectorAll('[data-link]').forEach(bloco => {
+    bloco.addEventListener('click', () => {
+      const destino = bloco.getAttribute('data-link');
+      window.location.href = destino;
+    });
+  });
+  // Alternância de modo escuro     (DENTRO DO SCRIPT)
+    const toggleBtn = document.getElementById("toggleModo");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent = 
+        document.body.classList.contains("dark-mode") 
+        ? "☀️ Modo Claro" 
+        : "🌙 Modo Escuro";
+    });
+</script>
+</body>
+</html>

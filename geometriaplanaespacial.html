@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+        
+        /* Botão de Voltar */
+          .btn-voltar {
+              background-color: #e65d6f;
+              color: white;
+              font-size: 16px;
+              font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+              padding: 12px 25px;
+              border: none;
+              border-radius: 5px;
+              margin-top: 30px;
+              text-decoration: none;
+              transition: background-color 0.3s ease;
+          }
+  
+          .btn-voltar:hover {
+              background-color: #e21251;
+          }
+  
+
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    }
+
+
+
+
+    /* Cabeçalho */
+    header {
+      background-color: #ffffff;
+      color: rgb(117, 117, 117);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-nome {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-nome img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .slogan {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .pesquisa {
+      max-width: 250px;
+    }
+
+    .pesquisa input {
+      padding: 5px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    /* Seções */
+    section {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .blocos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    justify-items: center;
+    }
+
+    .bloco {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 250px;
+      height: 20vh;
+      min-height: 150px;
+      max-height: 300px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    
+    .blocopersonalizado {
+      background-color: rgb(117, 178, 222);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 200px;
+      height: 20vh;
+      min-height: 90px;
+      max-height: 130px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .bloco:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 30px 20px;
+      background-color: #e9e9e9;
+    }
+
+    /* para definir o tamanho do carrosel*/
+   .carrossel-personalizado {
+  width: 100%;
+  max-height: 400px; /* opcional, limite máximo */
+  overflow: hidden;
+}
+
+.carrossel-personalizado .carousel-item img {
+  width: 100%;
+  height: auto; /* ajusta automaticamente a altura */
+  object-fit: cover; /* mantém o corte proporcional */
+  max-height: 400px; /* opcional */
+}
+  /* cards*/
+  .card h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card p {
+  margin: 0;
+}
+   
+  /* mudar cor bootstrap*/
+  .personalizado {
+  background-color: #e21250c9; /* azul escuro */
+  color: white;
+  font-family: 'Verdana', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.personalizado:hover {
+  background-color: #e21251; /* azul mais claro ao passar o mouse */
+}
+
+footer .text-dark {
+  color: #2273d0 !important;
+}
+
+ /* ===== MODO ESCURO ===== */  
+    body.dark-mode {
+      background: #121212;
+      color: #f1f1f1;
+    }
+    body.dark-mode header {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+    body.dark-mode .bloco {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+    }
+    body.dark-mode footer {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    body.dark-mode a { color: #9ecbff; }
+    body.dark-mode .personalizado {
+      background-color: #e65d6f;
+    }
+    body.dark-mode .personalizado:hover {
+      background-color: #e21251;
+    }
+
+    .bg-piclass {
+        background-color: #f8f9fa; /* cor clara padrão */
+        transition: background-color 0.3s;
+    }
+    body.dark-mode .bg-piclass {
+        background-color: #232323; /* cor escura para modo escuro */
+    }
+
+    /* Botão de alternância */
+    .modo-btn {
+      cursor: pointer;	
+
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background: #e39dc7;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .modo-btn:hover { background: #6e6e6e; }
+
+    body.dark-mode .bg-light {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+}
+body.dark-mode .text-dark {
+  color: #9ecbff !important;
+}
+body.dark-mode .text-center {
+  color: #f1f1f1 !important;
+}
+body.dark-mode .fw-bold {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode h2 {
+  color: #f1f1f1 !important;
+}
+    </style>
+</head>
+<body>
+
+     <!-- Botão de Voltar -->
+     <div class="text-start">
+        <a href="index.html" class="btn-voltar">Voltar</a>
+    </div>
+
+ <!-- Cabeçalho -->
+  <header>
+    <div class="logo-nome"> 
+      <img src="img/logosemfundo.png" alt="Logo">
+    </div>
+    <div class="slogan">πclass — o principal pilar do seu aprendizado</div>
+    <button class="modo-btn" id="toggleModo">🌙 Modo Escuro</button>
+  </header>
+
+<!-- Banner/Carrossel -->
+<div id="bannerpiclass" class="carousel slide carrossel-personalizado" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/capapicles.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/capapicles.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Transforme.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Matemática sem dor de cabeça..png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/teste54.png" class=" d-block w-100">
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#bannerpiclass" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bannerpiclass" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>
+ 
+ <!--CONTEUDO-->
+
+<div class="container my-5">
+  <h1 class="text-center mb-4">Geometria plana e espacial</h1>
+
+
+  <h3 class="mt-4">Geometria palana</h3>
+  <p class="lead">
+    A geometria plana é o estudo das formas geométricas que possuem apenas duas dimensões, como quadrado, triângulo, retângulo, trapézio e outros.
+  </p>
+  <p class="lead">
+   Aqui vamos focar nas suas fórmulas de áreas e algumas propriedades.
+  </p>
+<img src="img40.PNG" class="d-block w-100" alt="Imagem 40">
+  <h3 class="mt-4">Área de figuras planas</h3>
+  <p>
+    O cálculo das áreas pode ser feito também pelos princípios de partição e exclusão, veja abaixo o esquema:
+
+  </p>
+<img src="img41.PNG" class="d-block w-100" alt="Imagem 41">
+  <h4 class="mt-4">PROPRIEDADES POLÍGONOS:</h4>  
+<p>Um polígono é regular quando é convexo e possui todos os lados e ângulos de mesma medida. Por isso um polígono regular é equilátero, pois todos os lados são de mesmo comprimento, e equiângulo, visto que todos os ângulos possuem a mesma medida.
+</p>
+<p>A definição de polígono é de uma figura fechada, plana, formada por segmentos de reta não alinhados e que não se cruzam. Estes segmentos são os lados do polígono que, quando regular, são de mesmo comprimento.
+</p>
+<p>O encontro de dois lados é um vértice e, a área entre os lados é chamada ângulo interno, medido em grau. Nos polígonos regulares os ângulos são congruentes.
+</p>
+<p>Um polígono possui o mesmo número de lados, vértices, ângulos internos (ai) e externos (ae).
+</p>
+<img src="img42.PNG" class="d-block w-100" alt="Imagem 42">
+<br>
+<p>Os polígonos regulares são convexos, equiláteros e equiângulos, pois seus lados e ângulos são congruentes. As três condições devem ser satisfeitas.
+</p>
+<p>Um polígono é convexo quando todo e qualquer segmento liga dois pontos em seu interior, sem que nenhuma parte do segmento fique fora da área do polígono.</p>
+<img src="img43.PNG" class="d-block w-100" alt="Imagem 43">
+<br>
+
+<h3 class="mt-4">Perímetro de polígonos regulares</h3>
+<p>O perímetro de um polígono é a soma das medidas de seus lados. Como em um polígono regular, todos os lados possuem a mesma medida, basta multiplicar a medida de um lado pelo número de lados do polígono.</p>
+
+<p class = "text-center">P = n.L</p>
+
+<p>Onde,
+P é o perímetro,
+n é o número de lados,
+L é o comprimento dos lados.</p>
+
+<i>Exemplo</i>
+
+  <p>O perímetro do hexágono regular com lados de 7 cm é:
+</p>
+<p class = "text-center">P = n.L = 6.7 = 42cm</p>
+
+<h4 class="mt-4">Ângulos internos</h4>
+<p>Um ângulo interno é a região formada entre dois lados que se encontram em um vértice. Em um polígono regular todos os ângulos internos são de mesma medida.
+</p>
+<p>Da mesma forma, se o valor da soma dos ângulos é conhecida, a medida de um ângulo é o total divido pelo número de ângulos.</p>
+<img src="img44.PNG" class="d-block w-100" alt="Imagem 44">
+<br>
+
+<h4 class="mt-4">Soma dos ângulos internos de polígono</h4>
+<p>Se a medida de um ângulo interno é conhecida, é possível determinar a soma dos ângulos internos ao multiplicar seu valor pelo número de ângulos.
+<p class = "text-center">Si = ai . n</p>
+<p>Onde:
+ Si é a soma dos ângulos internos do polígono;
+ ai é a medida de um ângulo interno;
+n é o número de ângulos internos.
+</p>
+
+<p>Para determinar a soma dos ângulos internos de um polígono sem conhecer a medida de um ângulo, utilizamos a fórmula:
+</p>
+
+<p class = "text-center">Si = 180 . (n-2)</p>
+<i>Exemplo</i>
+<p>A soma dos ângulos internos de um polígono regular com 6 lados e a medida de cada ângulo é:</p>
+<img src="img45.PNG" class="d-block w-100" alt="Imagem 45">
+<p>A medida de cada ângulo é</p>
+<img src="img46.PNG" class="d-block w-100" alt="Imagem 46">
+
+<h4 class="mt-4">Apótema de um polígono regular</h4>
+<p>O apótema de um polígono regular é um segmento de reta que une o centro do polígono ao ponto médio de um lado, fazendo com este um ângulo de 90°.
+</p>
+<img src="img47.PNG" class="d-block w-100" alt="Imagem 47">
+
+<p>Desta forma, o apótema divide um lado em duas partes iguais, sendo uma mediatriz, pois divide o lado exatamente ao meio.
+</p>
+<p>A quantidade de apótemas de um polígono é a mesma de seu número de lados. Como o polígono é regular, os apótemas possuem a mesma medida.</p>
+
+<h4 class="mt-4">Área de polígonos regulares</h4>
+<p>Um modo de calcular a área de qualquer polígono regular, independente de seu número de lados, é multiplicar seu semiperímetro pelo seu apótema.</p>
+<p>O semiperímetro é a metade do perímetro.</p>
+
+<p class = "text-center">Área = p.a</p>
+<p>Onde,
+p é o semiperímetro (perímetro dividido por dois)
+a é a medida do apótema.
+</p>
+
+<h3 class="mt-4">Geometria palana</h3>
+<p>A Geometria Espacial é o estudo de objetos geométricos no espaço, ou seja, em um universo tridimensional.
+
+</p>
+<p>O ponto, a reta, o plano e o espaço são conceitos importantes para a Geometria Espacial.</p>
+<p>Na Geometria Espacial estudamos os sólidos geométricos, como os poliedros e os corpos redondos.</p>
+<p>Na Geometria Espacial existem fórmulas importantes envolvendo os sólidos geométricos, como o cálculo do volume e da área total.</p>
+<p>Diferentemente da Geometria Espacial, a Geometria Plana estuda objetos no plano, ou seja, com duas dimensões. Ela é a base da Geometria Espacial.</p>
+
+<h4 class="mt-4">O que a Geometria Espacial estuda?</h4>
+<p>A Geometria Espacial estuda as figuras espaciais conhecidas como sólidos geométricos. O cubo, o cilindro, o cone, as pirâmides, entre outros, são objetos de estudo da Geometria Espacial. Por meio da Geometria Espacial é possível descobrir as características e propriedades dos sólidos geométricos, e também é possível desenvolver fórmulas para o cálculo de volume e de área desses sólidos</p>
+
+<h4 class="mt-4">Conceitos importantes da Geometria Espacial</h4>
+<p>Para compreender a Geometria Espacial, é importante conhecer os elementos primitivos, que são: o ponto, a reta, o plano e o espaço. Os elementos primitivos são assim chamados por serem a base da Geometria e não possuírem uma definição, entretanto, todos temos uma intuição sobre cada um deles.</p>
+
+<br>
+<ul>
+    <li>Ponto</li>
+</ul>
+
+<p>Os pontos são representados por letras maiúsculas do nosso alfabeto e são o primeiro elemento primitivo da Geometria. O ponto não possui nenhuma dimensão, ou seja, é adimensional.</p>
+<img src="img48.PNG" class="d-block w-100" alt="Imagem 48">
+
+<br>
+<ul>
+    <li>Reta</li>
+</ul>
+<p>A reta é o segundo elemento primitivo, representado por letras minúsculas do alfabeto (por exemplo, r). A reta possui infinitos pontos colineares e uma única dimensão.
+</p>
+<img src="img49.PNG" class="d-block w-100" alt="Imagem 49">
+
+<br>
+<ul>
+    <li>Plano</li>
+</ul>
+<p>O plano é o terceiro elemento primitivo. Ele é representado por letras do alfabeto grego, como α, β, entre outras. O plano possui duas dimensões.</p>
+<img src="img50.PNG" class="d-block w-100" alt="Imagem 50">
+
+<br>
+<ul>
+    <li>Espaço</li>
+</ul>
+<p>O espaço possui três dimensões. Podemos representar o espaço quando temos três eixos reais, um para cada dimensão, como na imagem a seguir:</p>
+<img src="img51.PNG" class="d-block w-100" alt="Imagem 51">
+
+<h4 class="mt-4">Principais figuras da Geometria Espacial</h4>
+<p>As figuras da Geometria Espacial são conhecidas como sólidos geométricos. Os sólidos geométricos são divididos em dois grupos: os poliedros e os corpos redondos.</p>
+
+<br>
+<i>
+→ Poliedros</i>
+<p>Os poliedros são os sólidos geométricos que possuem faces formadas por polígonos, como o cubo, as pirâmides e os prismas.</p>
+<img src="img52.PNG" class="d-block w-100" alt="Imagem 52">
+
+<br>
+<i>
+→ Corpos redondos</i>
+<p>Os corpos redondos são os sólidos geométricos que possuem formas arredondadas. Os principais corpos redondos são a esfera, o cone e o cilindro.</p>
+<img src="img53.PNG" class="d-block w-100" alt="Imagem 53">
+
+<h4 class="mt-4">Principais fórmulas da Geometria Espacial</h4>
+<i>→ Fórmulas do prisma</i>
+<img src="img54.PNG" class="d-block w-100" alt="Imagem 54">
+<p>Para calcular o volume do prisma, é necessário conhecer a área da sua base e a sua altura. Já a área total do prisma é calculada utilizando a área da base e a área lateral. As fórmulas do volume, representado por V, e da área total, representada por 𝐴𝑡, são:</p>
+<p>V = Ab· h</p>
+<p>At = 2Ab + Al</p>
+<p>Ab → área da base.</p>
+<p>Al → área lateral.</p>
+<p>H → altura.</p>
+
+<br>
+<i>→ Fórmulas da pirâmide</i>
+<img src="img55.PNG" class="d-block w-100" alt="Imagem 55">
+<p>Assim como o prisma, as fórmulas de volume e área total da pirâmide dependem da sua área da base, da área lateral e da altura.</p>
+<p>V=(Ab⋅h)/3</p>
+
+<br>
+<i>→ Fórmulas do cilindro</i>
+<img src="img56.PNG" class="d-block w-100" alt="Imagem 56">
+<p>Para calcular o volume e a área total do cilindro, é necessário conhecer o comprimento da altura e do raio do cilindro.</p>
+<p>V = πr² · h</p>
+<p>At = 2πr (r + h)</p>
+<p>r → raio.</p>
+
+<br>
+<i>→ Fórmulas do cone</i>
+<img src="img57.PNG" class="d-block w-100" alt="Imagem 57">
+<p>O cone, além da fórmula do volume e da área total, tem também a fórmula da geratriz, que relaciona seu raio e sua altura.</p>
+<p>V=(π⋅r2⋅h)/3</p>
+<p>g² = r² + h²</p>
+<p>At = πr (r + g)</p>
+<p>g → geratriz do cone.</p>
+
+<br>
+<i>→ Fórmulas da esfera</i>
+<img src="img58.PNG" class="d-block w-100" alt="Imagem 58">
+<p>Para calcular o volume e a área total da esfera, é necessário conhecer somente o comprimento do seu raio.</p>
+<p>V=(4πr3)/3</p>
+<p>At = 4πr²</p>
+
+<h2 class="mt-5 text-center">QUESTÕES:</h2>
+  <p class="text-align">1. (Enem 2017) Para a Olimpíada de 2012, a piscina principal do Centro Aquático de Londres, medindo 50 metros de comprimento, foi remodelada para ajudar os atletas a melhorar suas marcas. Observe duas das melhorias:
+</p>
+  <img src="img59.PNG" class="d-block w-100" alt="Imagem 59">  
+    <p>A capacidade da piscina em destaque, em metro cúbico, é igual a</p>
+    <br>
+    <ul>
+        <li>A) 3750. </li>
+        <li>B) 1500. </li>
+        <li>C) 1250. </li>
+        <li>D) 375. </li>
+        <li>E) 150. </li>
+    </ul>
+    <p class="text-align">2. (Enem 2016) Em regiões agrícolas, é comum a presença de silos para armazenamento e secagem da produção de grãos, no formato de um cilindro reto, sobreposto por um cone, e dimensões indicadas na figura. O silo fica cheio e o transporte dos grãos é feito em caminhões de carga cuja capacidade é de 20 m³. Uma região possui um silo cheio e apenas um caminhão para transportar os grãos para a usina de beneficiamento.
+
+    </p>
+    <img src="img60.PNG" class="d-block w-100" alt="Imagem 60">  
+<br>
+<p>Utilize 3 como aproximação para π. </p>
+<p>O número mínimo de viagens que o caminhão precisará fazer para transportar todo o volume de grãos armazenados no silo é</p>
+<ul>
+    <li>A) 6. </li>
+    <li>B) 16. </li>
+    <li>C) 17. </li>
+    <li>D) 18. </li>
+    <li>E) 21.</li>
+</ul>
+
+    <p class="text-align">3. (Enem 2018) Uma fábrica comercializa chocolates em uma caixa de madeira, como na figura. 
+
+    </p>
+    <img src="img61.PNG" class="d-block w-100" alt="Imagem 61">  
+<p>A caixa de madeira tem a forma de um paralelepípedo reto-retângulo cujas dimensões externas, em centímetro, estão indicadas na figura. Sabe-se também que a espessura da madeira, em todas as suas faces, é de 0,5 cm.</p>
+<p>Qual é o volume de madeira utilizado, em centímetro cúbico, na construção de uma caixa de madeira como a descrita para embalar os chocolates?</p>
+
+<ul>
+    <li>a) 654.</li>
+    <li>b) 666.</li>
+    <li>c) 673. </li>
+    <li>d) 681. </li>
+    <li>e) 693. 
+    </li>
+</ul>
+
+<h2 class="mt-5 text-center">GABARITO:</h2>
+<i>1. Letra A</i>
+<p>Para calcular a largura, basta multiplicar o número de raias pelo comprimento, ou seja, 2,5 ⸳ 10 = 25 m.</p>
+<p>Agora, multiplicaremos as três dimensões:</p>
+<p class = "text-center">Capacidade = 25 ⸳ 3 ⸳ 50 = 3750 m³</p>
+
+<br>
+<i>2. Letra D</i>
+<p>Inicialmente, calcularemos o volume de um silo, que é composto por um cilindro e um cone.</p>
+<p class = "text-center">Vcilindro = πr²h</p>
+<p class = "text-center">Vcilindro = π ⸳ 3² ⸳ 12</p>
+<p class = "text-center">Vcilindro = π ⸳ 9 ⸳ 12</p>
+<p class = "text-center">Vcilindro = 108π</p>
+
+<p>Agora, calcularemos o volume do cone.
+</p>
+<img src="img62.PNG" class="d-block w-100" alt="Imagem 62">
+
+
+<p>Utilizando π = 3 e somando o volume do cilindro com o do cone, temos que:
+</p>
+<p class = "text-center">Vsilo = 9 ⸳ 3 + 108 ⸳ 3 = 351 m³</p>
+<p>O caminhão leva 20 m³ por viagem, então o número de viagens necessárias é calculado pela divisão
+</p>
+<p class = "text-center">35 : 20 = 17,55</p>
+<p>Serão necessárias, portanto, 18 viagens.</p>
+
+<br>
+<i>3. Letra C</i>
+<p>Calcularemos a diferença entre os volumes interno e externo da caixa, sabendo que no volume interno será retirado 1 cm de cada dimensão. Então, temos que:</p>
+<p class = "text-center">V = 20 ⸳ 8 ⸳ 20 – 19 ⸳ 7 ⸳ 19 = 3200 – 2527 = 673 cm³
+</p>
+<p>Além disso, serão contratados outros 3 jogadores com altura x, y z, e queremos que a média de altura seja 1,99, então, temos que:</p>
+<p class = "text-center">(23,67 + x + y + z) : 15 = 1,99
+</p>
+
+</div>
+
+
+        
+    
+  <!-- Rodapé -->
+   <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase fw-bold fst-italic">PICLASS</h5>
+                    <p> Melhor isolado de matemática! </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">links úteis</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.instagram.com/plataformapiclass/" class="text-dark">Instagram</a></li>
+                        <li><a href="sobrenos.html" class="text-dark">Sobre Nós</a></li>
+                    </ul>
+                </div>
+                <div class="col"></div>
+                <div class="col-md-auto">
+                    <h5 class="text-uppercase">Converse conosco:</h5>
+                    <ul class="list-unstyled">
+                      <li> contato.piclass@gmail.com</li>
+            
+                    </ul>
+                </div>
+            </div>  
+        </div>
+        <div class="text-center p-3 bg-dark text-white">
+            © 2025 Piclass. Todos os direitos reservados.
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  // Inicialização manual opcional (troca a cada 5s)
+    const el = document.querySelector('#bannerpiclass');
+    const carousel = new bootstrap.Carousel(el, { interval: 5000 });
+ 
+  // Seleciona todos os blocos com atributo data-link
+  document.querySelectorAll('[data-link]').forEach(bloco => {
+    bloco.addEventListener('click', () => {
+      const destino = bloco.getAttribute('data-link');
+      window.location.href = destino;
+    });
+  });
+
+  // Alternância de modo escuro     (DENTRO DO SCRIPT)
+    const toggleBtn = document.getElementById("toggleModo");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent = 
+        document.body.classList.contains("dark-mode") 
+        ? "☀️ Modo Claro" 
+        : "🌙 Modo Escuro";
+    });
+
+</script>
+</body>
+</html>

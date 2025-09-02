@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probabilidade</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razão e proporção</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+    /* Botão de Voltar */
+      .btn-voltar {
+        background-color: #e65d6f;
+        color: white;
+        font-size: 16px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 30px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+          }
+  
+      .btn-voltar:hover {
+        background-color: #e21251;
+          }
+  
+
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    }
+
+
+
+    /* Cabeçalho */
+    header {
+      background-color: #ffffff;
+      color: rgb(117, 117, 117);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-nome {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-nome img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .slogan {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .pesquisa {
+      max-width: 250px;
+    }
+
+    .pesquisa input {
+      padding: 5px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    /* Seções */
+    section {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .blocos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    justify-items: center;
+    }
+
+    .bloco {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 250px;
+      height: 20vh;
+      min-height: 150px;
+      max-height: 300px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .bloco:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 30px 20px;
+      background-color: #e9e9e9;
+    }
+
+    /* para definir o tamanho do carrosel*/
+   .carrossel-personalizado {
+  width: 100%;
+  max-height: 400px; /* opcional, limite máximo */
+  overflow: hidden;
+}
+
+.carrossel-personalizado .carousel-item img {
+  width: 100%;
+  height: auto; /* ajusta automaticamente a altura */
+  object-fit: cover; /* mantém o corte proporcional */
+  max-height: 400px; /* opcional */
+}
+  /* cards*/
+  .card h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card p {
+  margin: 0;
+}
+   
+  /* mudar cor bootstrap*/
+  .personalizado {
+  background-color: #e21250c9; /* azul escuro */
+  color: white;
+  font-family: 'Verdana', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.personalizado:hover {
+  background-color: #e21251; /* azul mais claro ao passar o mouse */
+}
+
+footer .text-dark {
+  color: #2273d0 !important;
+}
+
+ /* ===== MODO ESCURO ===== */  
+    body.dark-mode {
+      background: #121212;
+      color: #f1f1f1;
+    }
+    body.dark-mode header {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+    body.dark-mode .bloco {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+    }
+    body.dark-mode footer {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    body.dark-mode a { color: #9ecbff; }
+    body.dark-mode .personalizado {
+      background-color: #e65d6f;
+    }
+    body.dark-mode .personalizado:hover {
+      background-color: #e21251;
+    }
+
+    .bg-piclass {
+        background-color: #f8f9fa; /* cor clara padrão */
+        transition: background-color 0.3s;
+    }
+    body.dark-mode .bg-piclass {
+        background-color: #232323; /* cor escura para modo escuro */
+    }
+
+    /* Botão de alternância */
+    .modo-btn {
+      cursor: pointer;	
+
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background: #e39dc7;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .modo-btn:hover { background: #6e6e6e; }
+
+    body.dark-mode .bg-light {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+}
+body.dark-mode .text-dark {
+  color: #9ecbff !important;
+}
+body.dark-mode .text-center {
+  color: #f1f1f1 !important;
+}
+body.dark-mode .fw-bold {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode h2 {
+  color: #f1f1f1 !important;
+}
+ </style>
+</head>
+<body>
+    <body>
+
+        <!-- Botão de Voltar -->
+       <div class="text-start">
+           <a href="oquemaiscai.html" class="btn-voltar">Voltar</a>
+       </div>
+   
+ <!-- Cabeçalho -->
+  <header>
+    <div class="logo-nome"> 
+      <img src="img/logosemfundo.png" alt="Logo">
+    </div>
+    <div class="slogan">πclass — o principal pilar do seu aprendizado</div>
+    <button class="modo-btn" id="toggleModo">🌙 Modo Escuro</button>
+  </header>
+
+     
+<!-- Banner/Carrossel -->
+<div id="bannerpiclass" class="carousel slide carrossel-personalizado" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/capapicles.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/piclasssssssss.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Transforme.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Matemática sem dor de cabeça..png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/teste54.png" class=" d-block w-100">
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#bannerpiclass" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bannerpiclass" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>
+
+   <!--CONTEUDO probabilidade-->
+   
+   <div class="container my-5">
+     <h1 class="text-center mb-4">Probabilidade</h1>
+    
+     <h3 class="mt-4">Como é?</h3>
+     <p>
+        Normalmente as situações propostas tratam de experimentos aleatórios e também de casos equiprováveis, isto é, os eventos possuem probabilidades iguais de ocorrência.
+     </p>
+     <p>As questões de probabilidade no Enem baseiam-se na interpretação das ideias apresentadas e no uso do cálculo das chances de um evento acontecer, o qual é representado pela fórmula:
+    </p>
+    <img src="img/img6.PNG" class="d-block w-100" alt="Imagem7">
+    
+    <p>O número de casos favoráveis é justamente o que “estou procurando”, e o número de casos possíveis é também conhecido como o espaço amostral, sendo representado pela letra grega ômega (Ω). Vejamos dois exemplos de questões com probabilidade no Enem de provas anteriores.
+    </p>
+
+    <i>EXEMPLOS:</i>
+    <p class="text-align">1. Todo o país passa pela primeira fase de campanha de vacinação contra a gripe suína (H1N1). Segundo um médico infectologista do Instituto Emílio Ribas, de São Paulo, a imunização “deve mudar”, no país, a história da epidemia. Com a vacina, de acordo com ele, o Brasil tem a chance de barrar uma tendência do crescimento da doença, que já matou 17 mil no mundo. A tabela apresenta dados específicos de um único posto de vacinação.
+    </p>
+    <br>
+    <img src="img/img7.PNG" class="d-block w-100" alt="Imagem 8">
+   
+    <br>
+     <p>
+        Escolhendo-se aleatoriamente uma pessoa atendida nesse posto de vacinação, a probabilidade de ela ser portadora de doença crônica é
+     </p>
+    
+    <ul>
+        <li>a) 8%</li>
+        <li>b) 9%</li>
+        <li>c) 11%</li>
+        <li>d) 12%</li>
+        <li>e) 22%</li>
+    </ul>
+   
+    <p>
+        De acordo com a tabela apresentada no exercício, temos informações a respeito de cinco tipos de público-alvo. O total formado por esses cinco grupos compõe o nosso espaço amostral. Vamos então somar e encontrar o total de pessoas vacinadas:
+     </p>
+
+    <p class = "text-center">n(Ω) = 42 + 22 + 56 + 30 + 50 </p>
+    <p class = "text-center">n(Ω) = 200 </p>
+
+    <p>
+        Então o grupo total de vacinados são 200 pessoas. Precisamos agora do número de casos favoráveis. Essa informação é a que mais nos interessa, a quantidade de pessoas portadoras de doenças crônicas que foram vacinadas. De acordo com a tabela, esse valor é de 22 pessoas. Vamos então utilizar a fórmula para o cálculo da probabilidade:
+     </p>
+
+     <img src="img/img8.PNG" class="d-block w-100" alt="Imagem 9">
+<br>
+    <p>Fazendo a divisão de 11 por 100, encontramos o valor de 0,11. Multiplicando esse valor por 100, encontramos a porcentagem que procurávamos, 11%. Portanto, a alternativa correta é a letra c.</p>
+   <br>
+
+   <p>2. Numa escola com 1 200 alunos foi realizada uma pesquisa sobre o conhecimento desses em duas línguas estrangeiras, inglês e espanhol. Nessa pesquisa constatou-se que 600 alunos falam inglês, 500 falam espanhol e 300 não falam qualquer um desses idiomas. Escolhendo-se um aluno dessa escola ao acaso e sabendo-se que ele não fala inglês, qual a probabilidade de que esse aluno fale espanhol?</p>
+
+   <ul>
+    <li>a) 1/2</li>
+    <li>b) 5/8</li>
+    <li>c) 1/4</li>
+    <li>d) 5/6</li>
+    <li>e) 5/14</li>
+   </ul>
+
+   <br>
+   <p>Assim como havíamos comentado no início, esse é o tipo de questão em que o raciocínio e a interpretação são fundamentais. Se somarmos o número de alunos que falam inglês, os que falam espanhol e os que não falam nenhuma dessas línguas, teremos um total de 1400, o que supera a quantidade de alunos da escola! Isso nos garante então que há alunos que falam inglês e espanhol simultaneamente. Vamos então determinar essas quantidades com exatidão.</p>
+   <p>Se temos 1200 alunos na escola e 300 deles não falam línguas estrangeiras, restam apenas 900 alunos que falam essas línguas. Se somarmos a quantidade de alunos que falam inglês (600) com os que falam espanhol (500), obteremos um total de 1.100. Então, ao fazermos a diferença desse total com a quantidade que fala língua estrangeira, isto é, 1.100 – 900, obteremos 200. Essa é a quantidade de alunos que falam as duas línguas. Portanto, de 600 alunos, apenas 400 falam somente inglês, e de 500 alunos, apenas 300 falam apenas espanhol. Para facilitar o entendimento, podemos organizar essas informações em um <i>diagrama de Venn:</i></p>
+    
+   <img src="img/img9.PNG" class="d-block w-100" alt="Imagem 10">
+   <p class="text-center">Através do Diagrama de Venn, podemos ver a distribuição dos alunos em relação à língua estrangeira falada
+   </p>
+   
+   <p>Através do diagrama de Venn, fica evidente que 400 alunos falam apenas inglês, 300 alunos falam apenas espanhol, 200 alunos falam as duas línguas e 300 alunos não falam nenhuma língua estrangeira.
+</p>
+<p>Se vamos escolher um aluno que não fala inglês, nosso espaço amostral será composto por aqueles que falam apenas espanhol ou que não falam nenhuma língua, logo, n(Ω) = 600. O número de casos favoráveis é a quantidade de alunos que falam apenas espanhol, então n(E) = 300. Vamos então calcular a probabilidade:</p>
+<img src="img/img10.PNG" class="d-block w-100" alt="Imagem 11">
+
+<br>
+
+
+
+
+
+
+<!--VIDEOAULAS--------------------------------------->
+
+<h2 class="mt-5 text-center">VIDEOAULAS:</h2>
+
+<p>Seleção de videoaulas sobre esse assunto com ótimos professores que os ofertam gratuitamente na internet:</p>
+
+<div class="container mt-5 text-center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/iNCkGogNtKI?si=OmAHT0AzW669xCSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/f7WKY_m7cBE?si=rx-RHWBkj8PO_wfC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/mLL33eqlxDo?si=WO31KaBaEe-4mptD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+
+
+
+
+
+<!--QUESTOES----------------------------------------->
+
+     <h2 class="mt-5 text-center">QUESTÕES:</h2>
+     <br>
+     <p class="text-align">1. Para analisar o desempenho de um método diagnóstico, realizam-se estudos em populações contendo pacientes sadios e doentes. Quatro situações distintas podem acontecer nesse contexto de teste:
+       </p>
+     <br>
+     <p>1) Paciente TEM a doença e o resultado do teste é POSITIVO.</p>
+     <p>2) Paciente TEM a doença e o resultado do teste é NEGATIVO.</p>
+     <p>3) Paciente NÃO TEM a doença e o resultado do teste é POSITIVO.</p>
+     <p>4) Paciente NÃO TEM a doença e o resultado do teste é NEGATIVO.</p>
+     <br>
+     <p>Um índice de desempenho para avaliação de um teste de diagnóstico é a sensibilidade, definida como a probabilidade de o resultado do teste ser POSITIVO se o paciente estiver com a doença.</p>
+     <p>O quadro refere-se a um teste diagnóstico para a doença A, aplicado em uma amostra composta por duzentos indivíduos.</p>
+     <p>Conforme o quadro teste proposto, a sensibilidade dele é de:</p>
+     <ul>
+       <li>a) 47,5%</li>
+       <li>b) 85,0%. </li>
+       <li>c) 86,3%.</li>
+       <li>d) 94,4%</li>
+       <li>e) 95,0%</li>
+     </ul>
+     <br>
+     <p class="text-align">2. O diretor de uma escola convidou os 280 alunos de terceiro ano a participarem de uma brincadeira. Suponha que existem 5 objetos e 6 personagens numa casa de 9 cômodos; um dos personagens esconde um dos objetos em um dos cômodos da casa.
+       </p>
+     <p>O objetivo da brincadeira é adivinhar qual objeto foi escondido, por qual personagem e em qual cômodo da casa o objeto foi escondido. Todos os alunos decidiram participar. A cada vez um aluno é sorteado e dá a sua resposta</p>
+     <p>As respostas devem ser sempre distintas das anteriores, e um mesmo aluno não pode ser sorteado mais de uma vez. Se a resposta do aluno estiver correta, ele é declarado vencedor e a brincadeira é encerrada.</p>
+     <p>O diretor sabe que algum aluno acertará a resposta porque há:</p>
+     <ul>
+       <li>a) 10 alunos a mais do que possíveis respostas distintas</li>
+       <li>b) 20 alunos a mais do que possíveis respostas distintas</li>
+       <li>c) 119 alunos a mais do que possíveis respostas distintas</li>
+       <li>d) 260 alunos a mais do que possíveis respostas distintas</li>
+       <li>e) 270 alunos a mais do que possíveis respostas distintas</li>
+     </ul>
+     <br>
+   
+     <h2 class="mt-5 text-center">GABARITO:</h2>
+     <i>1. Resposta: A</i>
+     <p>A sensibilidade é definida como a probabilidade de o resultado ser positivo se o paciente estiver com a doença. Assim, é possível inferir que a sensibilidade é igual ao resultado positivo dividido pelo número de pessoas com a doença</p>
+     <p>Por isso, é necessário observar a coluna “presente” na tabela, que mostra as pessoas que têm a doença. Neste caso, 100 pessoas possuem a enfermidade e 95 é o número de resultados positivos.
+    </p>
+    <p>Dessa forma, o cálculo se dá:</p>
+    <i>Sensibilidade = 95 ÷ 100 = 0,95</i>
+    <br>
+    <i>Sensibilidade = 0,95 x 100% = 95%</i>
+     <br>
+     <br>
+       <i>2. Resposta: D</i>
+       <p class="text-align">Neste exercício, o primeiro passo é determinar o número total de possibilidades por meio do princípio multiplicativo:
+       </p>
+       <p>6 x 5 x 9 = 270</p>
+
+       <br>
+       <p>Na sequência, é necessário realizar uma interpretação do resultado obtido no princípio multiplicativo. 
+    </p>
+    <p>Se cada aluno deve ter uma resposta e foram selecionados 280 alunos, entende-se que o diretor sabe que algum aluno acertará a resposta porque há 10 alunos a mais do que a quantidade de respostas possíveis.</p>
+    <br>
+    
+   </div>
+   
+   
+           
+       
+  <!-- Rodapé -->
+   <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase fw-bold fst-italic">PICLASS</h5>
+                    <p> Melhor isolado de matemática! </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">links úteis</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.instagram.com/plataformapiclass/" class="text-dark">Instagram</a></li>
+                        <li><a href="sobrenos.html" class="text-dark">Sobre Nós</a></li>
+                    </ul>
+                </div>
+                <div class="col"></div>
+                <div class="col-md-auto">
+                    <h5 class="text-uppercase">Converse conosco:</h5>
+                    <ul class="list-unstyled">
+                      <li> contato.piclass@gmail.com</li>
+            
+                    </ul>
+                </div>
+            </div>  
+        </div>
+        <div class="text-center p-3 bg-dark text-white">
+            © 2025 Piclass. Todos os direitos reservados.
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  // Inicialização manual opcional (troca a cada 5s)
+    const el = document.querySelector('#bannerpiclass');
+    const carousel = new bootstrap.Carousel(el, { interval: 5000 });
+ 
+  // Seleciona todos os blocos com atributo data-link
+  document.querySelectorAll('[data-link]').forEach(bloco => {
+    bloco.addEventListener('click', () => {
+      const destino = bloco.getAttribute('data-link');
+      window.location.href = destino;
+    });
+  });
+  // Alternância de modo escuro     (DENTRO DO SCRIPT)
+    const toggleBtn = document.getElementById("toggleModo");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent = 
+        document.body.classList.contains("dark-mode") 
+        ? "☀️ Modo Claro" 
+        : "🌙 Modo Escuro";
+    });
+</script>
+</body>
+</html>

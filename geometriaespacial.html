@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometria espacial</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+        /* Botão de Voltar */
+          .btn-voltar {
+              background-color: #e65d6f;
+              color: white;
+              font-size: 16px;
+              font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+              padding: 12px 25px;
+              border: none;
+              border-radius: 5px;
+              margin-top: 30px;
+              text-decoration: none;
+              transition: background-color 0.3s ease;
+          }
+  
+          .btn-voltar:hover {
+              background-color: #e21251;
+          }
+  
+
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    }
+
+
+
+
+    /* Cabeçalho */
+    header {
+      background-color: #ffffff;
+      color: rgb(117, 117, 117);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-nome {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-nome img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .slogan {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .pesquisa {
+      max-width: 250px;
+    }
+
+    .pesquisa input {
+      padding: 5px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    /* Seções */
+    section {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .blocos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    justify-items: center;
+    }
+
+    .bloco {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 250px;
+      height: 20vh;
+      min-height: 150px;
+      max-height: 300px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    
+    .blocopersonalizado {
+      background-color: rgb(117, 178, 222);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 20vw;
+      min-width: 180px;
+      max-width: 200px;
+      height: 20vh;
+      min-height: 90px;
+      max-height: 130px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .bloco:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 30px 20px;
+      background-color: #e9e9e9;
+    }
+
+    /* para definir o tamanho do carrosel*/
+   .carrossel-personalizado {
+  width: 100%;
+  max-height: 400px; /* opcional, limite máximo */
+  overflow: hidden;
+}
+
+.carrossel-personalizado .carousel-item img {
+  width: 100%;
+  height: auto; /* ajusta automaticamente a altura */
+  object-fit: cover; /* mantém o corte proporcional */
+  max-height: 400px; /* opcional */
+}
+  /* cards*/
+  .card h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card p {
+  margin: 0;
+}
+   
+  /* mudar cor bootstrap*/
+  .personalizado {
+  background-color: #e21250c9; /* azul escuro */
+  color: white;
+  font-family: 'Verdana', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.personalizado:hover {
+  background-color: #e21251; /* azul mais claro ao passar o mouse */
+}
+
+footer .text-dark {
+  color: #2273d0 !important;
+}
+
+ /* ===== MODO ESCURO ===== */  
+    body.dark-mode {
+      background: #121212;
+      color: #f1f1f1;
+    }
+    body.dark-mode header {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+    body.dark-mode .bloco {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+    }
+    body.dark-mode footer {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    body.dark-mode a { color: #9ecbff; }
+    body.dark-mode .personalizado {
+      background-color: #e65d6f;
+    }
+    body.dark-mode .personalizado:hover {
+      background-color: #e21251;
+    }
+
+    .bg-piclass {
+        background-color: #f8f9fa; /* cor clara padrão */
+        transition: background-color 0.3s;
+    }
+    body.dark-mode .bg-piclass {
+        background-color: #232323; /* cor escura para modo escuro */
+    }
+    </style>
+</head>
+<body>
+    <!-- Botão de Voltar -->
+    <div class="text-start">
+        <a href="oquemaiscai.html" class="btn-voltar">Voltar</a>
+    </div>
+
+ <!-- Cabeçalho -->
+  <header>
+    <div class="logo-nome"> 
+      <img src="img/logosemfundo.png" alt="Logo">
+    </div>
+    <div class="slogan">πclass — o principal pilar do seu aprendizado</div>
+    <button class="modo-btn" id="toggleModo">🌙 Modo Escuro</button>
+  </header>
+
+  
+<!-- Banner/Carrossel -->
+<div id="bannerpiclass" class="carousel slide carrossel-personalizado" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/capapicles.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/piclasssssssss.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Transforme.png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Matemática sem dor de cabeça..png" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="img/teste54.png" class=" d-block w-100">
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#bannerpiclass" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bannerpiclass" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>
+ 
+    <!--CONTEUDO-->
+
+<div class="container my-5">
+  <h1 class="text-center mb-4">Geometria espacial</h1>
+<p>Conceitos primitivos da geometria espacial (ponto, reta, plano e espaço) e as definições básicas de formas geométricas mais simples. Nessa etapa, aprendemos o que são poliedros, poliedros convexos, relação de Euler, o que são prismas, o que são pirâmides, o que são cilindros e cones. Estudamos também as propriedades dessas figuras, suas classificações e, se possível, reveja as diferenças entre prismas e pirâmides e entre cones e cilindros.</p>
+<p>Posteriormente, é preciso estudar área e volume desses sólidos geométricos e, por fim, estudar bastante sobre suas planificações, projeções e secções. Questões envolvendo esse tipo de conteúdo são muito frequentes no Enem, mas é preciso saber a parte introdutória desses sólidos, suas características e definições para conseguir resolver esses problemas.</p>
+
+<h3>Poliedros</h3>
+<p>Poliedros são figuras tridimensionais formadas pela união de polígonos regulares, na qual os ângulos poliédricos são todos congruentes. A união desses polígonos forma elementos que compõem o poliedro, são eles: vértices, arestas e faces. No entanto, nem toda figura tridimensional é um poliedro, um exemplo disso são as figuras que possuem faces curvas chamadas de corpos redondos.</p>
+<p>Existe uma fórmula matemática que relaciona os elementos de um poliedro chamada relação de Euler. Além disso, os poliedros dividem-se em dois grupos: os chamados poliedros convexos e os não convexos. Alguns poliedros merecem uma atenção especial, são os chamados poliedros de Platão: tetraedro, hexaedro, octaedro, dodecaedro e icosaedro.</p>
+
+<img src="img/img128.PNG" class="d-block w-100" alt="Imagem 128">
+<br>
+
+<h3>Poliedros convexos</h3>
+<p>Um poliedro será convexo quando for formado por polígonos convexos, de forma que as condições a seguir sejam aceitas:</p>
+<ul>
+    <li>Dois dos polígonos nunca são coplanares, ou seja, não pertencem ao mesmo plano.</li>
+    <li>Cada lado de um desses polígonos pertence a apenas dois polígonos.</li>
+    <li>O plano que contém qualquer um desses polígonos deixa os demais polígonos no mesmo semiespaço.</li>
+</ul>
+
+<h3>Propriedades </h3>
+<p>1. A soma das arestas de todas as faces é igual ao dobro do número de arestas do poliedro.</p>
+<i>Exemplo</i>
+<p>Um poliedro tem 6 faces quadradas. Vamos determinar a quantidade de arestas.</p>
+<p>De acordo com a propriedade, basta multiplicar o número de arestas de uma face pela quantidade de faces, e isso é igual ao dobro do número de arestas. Dessa forma:</p>
+<img src="img/img129.PNG" class="d-block w-100" alt="Imagem 129">
+<br>
+
+<p>2. A soma dos vértices de todas as faces é igual à soma das arestas de todas as faces, que é igual ao dobro do número de arestas.</p>
+<i>Exemplo</i>
+<p>Um poliedro com 5 ângulos tetraédricos e 4 ângulos hexaédricos. Vamos determinar a quantidade de arestas.</p>
+<p>De maneira análoga ao exemplo anterior, a segunda propriedade diz que a soma das arestas de todas as faces é igual ao dobro do número de arestas. O número de arestas é dado pelo produto de 5 por 4 e 4 por 6, pois são 5 ângulos tetraédricos e 4 hexaédricos. Assim:</p>
+<img src="img/img130.PNG" class="d-block w-100" alt="Imagem 130">
+<br>
+
+<h3>Relação de Euler</h3>
+<p>A relação de Euler é uma igualdade que relaciona o número de vértices, arestas e faces em poliedros convexos. Ela diz que o número de faces mais o de vértices é igual ao número de arestas mais dois.</p>
+<p>A relação de Euler é dada por:</p>
+<p class = "text-center">F + V = A + 2</p>
+<p>Onde,</p>
+<p>F é o número de faces;</p>
+<p>V o número de vértices;</p>
+<p>A o número de arestas.</p>
+
+<h3>Prismas</h3>
+<h4>Composição do Prisma</h4>
+<img src="img/img131.PNG" class="d-block w-100" alt="Imagem 131">
+<br>
+
+<h3>Classificação dos Prismas</h3>
+<p>Os prismas são classificados em Retos e Oblíquos:</p>
+<ul>
+    <li><i>Prisma Reto:</i> possui arestas laterais perpendiculares à base, cujas faces laterais são retângulos.</li>
+    <li><i>Prisma Oblíquo:</i> possui arestas laterais oblíquas à base, cujas faces laterais são paralelogramos.</li>
+</ul>
+<img src="img/img132.PNG" class="d-block w-100" alt="Imagem 132">
+<br>
+
+<h3>Bases do Prisma</h3>
+<p></p>De acordo com o formato das bases, os primas são classificados em:
+<ul>
+    <li>Prisma Triangular: base formada por triângulo.</li>
+    <li>Prisma Quadrangular: base formada por quadrado.</li>
+    <li>Prisma Pentagonal: base formada por pentágono.</li>
+    <li>Prisma Hexagonal: base formada por hexágono.</li>
+    <li>Prisma Heptagonal: base formada por heptágono.</li>
+    <li>Prisma Octogonal: base formada por octógono.</li>
+</ul>
+<img src="img/img133.PNG" class="d-block w-100" alt="Imagem 133">
+<br>
+<p>Os chamados “prismas regulares” são aqueles cujas bases são polígonos regulares e, portanto, formados por prismas retos.</p>
+
+<h3>Fórmulas do Prisma</h3>
+<h4>Áreas do Prisma</h4>
+<p><i>Área Lateral:</i> para calcular a área lateral do prisma, basta somar as áreas das faces laterais. Num prisma reto, que possui todas as áreas das faces laterais congruentes, a fórmula da área lateral é:</p>
+<p class = "text-center">Al = n . a</p>
+<p>n: número de lados</p>
+<p>a: face lateral</p>
+<br>
+
+<p><i>Área Total:</i> para calcular a área total de um prisma, basta somar as áreas das faces laterais e as áreas das bases:</p>
+<p class = "text-center">At = Sl+ 2Sb</p>
+<p>Sl: Soma das áreas das faces laterais</p>
+<p>Sb: soma das áreas das bases</p>
+
+<h4>Volume do Prisma</h4>
+<p>O volume do prisma é calculado pela seguinte fórmula:</p>
+<p class = "text-center">V = Ab.h</p>
+<p>Ab: área da base</p>
+<p>h: altura</p>
+
+<h3>Pirâmides</h3>
+<p>Segundo as bases e o número arestas que formam as pirâmides, elas são classificadas em:</p>
+<img src="img/img134.PNG" class="d-block w-100" alt="Imagem 134">
+<br>
+
+<p>No tocante à inclinação da base, as pirâmides são classificadas de duas maneiras:</p>
+<ul>
+    <li>Pirâmides Retas, que formam um ângulo de 90º;</li>
+    <li>Pirâmides Oblíquas, que apresentam ângulos diferentes de 90º.</li>
+</ul>
+
+<h3>Elementos da Pirâmide</h3>
+<img src="img/img135.PNG" class="d-block w-100" alt="Imagem 135">
+<br>
+
+<h3>Área da Pirâmide</h3>
+<p>Para calcular a área total da pirâmide, utiliza-se a seguinte fórmula:</p>
+<img src="img/img136.PNG" class="d-block w-100" alt="Imagem 136">
+<p>Onde:</p>
+<p>Ab: Área da base</p>
+<p>h: altura</p>
+<p>O volume é expresso em unidade cúbicas, como cm³ e m³.</p>
+<br>
+
+<h3>Cilindros</h3>
+<h4>Resumo sobre cilindro</h4>
+<p></p>-O cilindro é um sólido geométrico.
+<p></p>-Possui duas bases circulares paralelas e uma área lateral que conecta essas bases.
+<p></p>-É um corpo redondo devido às suas bases circulares.
+<p></p>-São conhecidos dois tipos de cilindro, o cilindro reto e o cilindro oblíquo. Essa classificação se dá de acordo com o eixo.
+<p>-A área da base do cilindro é calculada pela fórmula:</p>
+<p class = "text-center">Ab=πr^2</p>
+<p>-A área lateral do cilindro é calculada pela fórmula:</p>
+<p class = "text-center">Al=2πrh</p>
+<p>-A área total do cilindro é a soma da área lateral mais 2 vezes a área da base:</p>
+<p class = "text-center">At= 2πrh + 2πr^2</p>
+<p>-O volume do cilindro é calculado pela fórmula:</p>
+<p class = "text-center">V=πr^2⋅h</p>
+<p>-Existem dois tipos de secção que podem ser feitas em um cilindro: transversal e meridiana.</p>
+<br>
+
+<h4>Elementos do cilindro</h4>
+<p>O cilindro é um sólido geométrico composto por duas bases no formato de círculos e paralelas, e uma área lateral que as conecta. O fato de a base do cilindro ser um círculo faz com que ele seja classificado como corpo redondo. Os principais elementos do cilindro são as suas bases, o comprimento do raio da base, a área lateral e a altura.</p>
+<img src="img/img137.PNG" class="d-block w-100" alt="Imagem 137">
+<br>
+
+<h4>Representação de um cilindro oblíquo.</h4>
+<i>Planificação do cilindro</i>
+<p>Para compreender um pouco mais o cálculo da área e do volume do cilindro, é importante reconhecermos a planificação do cilindro.</p>
+<img src="img/img138.PNG" class="d-block w-100" alt="Imagem 138">
+<br>
+
+<h4>Áreas do cilindro</h4>
+<p>Com a planificação, podemos encontrar a fórmula para calcular a área da base, a área lateral e a área total do cilindro.</p>
+<p>➝ Área da base</p>
+<p>Como vimos, a base do cilindro é um círculo, então a fórmula da área da base é igual à fórmula da área do círculo.</p>
+<p class = "text-center">Ab=πr^2</p>
+<p>r → comprimento do raio do cilindro.</p>
+
+<i>Exemplo:</i>
+<p>Qual é a área da base de um cilindro que possui raio medindo 4 cm? Utilize 3,1 como aproximação para o valor de π.</p>
+
+<i>Resolução:</i>
+<p>Calculando a área da base, temos que r = 4 e π=3,1</p>
+<p class = "text-center">Ab=3,1⋅4^2</p>
+<p class = "text-center">Ab=3,1⋅16</p>
+<p class = "text-center">Ab= 49,6 cm^2</p>
+<br>
+
+<p>➝ Área lateral</p>
+<p>A área lateral do cilindro é formada por um retângulo, e sabemos que a área de um retângulo é o produto entre a base e a altura. Podemos observar que o comprimento da base do retângulo é igual ao comprimento da circunferência da base do cilindro. Sendo assim, para calcular a base do retângulo, utilizamos a fórmula do comprimento da circunferência. A área lateral pode ser calculada pela fórmula:</p>
+<p class = "text-center">Al=2πrh</p>
+<p>h → comprimento da altura do cilindro.</p>
+
+<i>Exemplo:</i>
+<p>Um cilindro possui 9 cm de altura e raio medindo 5 cm. Utilizando 3 como aproximação para π, a área lateral desse cilindro é de:</p>
+
+<i>Resolução:</i>
+<p>Calculando a área lateral com h = 9, r = 5 e π = 3:</p>
+<p class = "text-center">Al=2⋅3⋅5⋅9</p>
+<p class = "text-center">Al=270 cm^2</p>
+<br>
+
+<p>➝ Área total</p>
+<p>Como o cilindro possui duas bases circulares mais a área lateral, então a área total é a soma dessas áreas.</p>
+<p class = "text-center">At=2Ab+Al</p>
+<p>Substituindo pelas fórmulas citadas anteriormente, temos que:</p>
+<p class = "text-center">At=2πr^2+2πrh</p>
+<p>Podemos ainda colocar 2πr em evidência:</p>
+<p class = "text-center">At = 2πr (r+h)</p>
+
+<i>Exemplo:</i>
+<p>Um cilindro possui altura igual a 12 cm e raio da base igual a 8 cm. Utilizando 3 como aproximação para o valor de π, qual é a área total desse sólido?</p>
+
+<i></i>
+<p>Sabemos que h = 12, r = 8 e π = 3, logo:</p>
+<p class = "text-center">At= 2⋅3⋅8 (8+12)</p>
+<p class = "text-center">At = 48⋅20</p>
+<p class = "text-center">At=960 cm^2</p>
+
+<h3>Cones</h3>
+<img src="img/img139.PNG" class="d-block w-100" alt="Imagem 139">
+<img src="img/img140.PNG" class="d-block w-100" alt="Imagem 140">
+<img src="img/img141.PNG" class="d-block w-100" alt="Imagem 141">
+<br>
+
+<h3>Tronco de cone</h3>
+<p>Quando se intercepta um cone por um plano paralelo à base, é possível criar o sólido geométrico conhecido como tronco de um cone. O tronco de um cone vai sempre possuir duas bases no formato de círculos, uma maior e a outra menor.</p>
+<img src="img/img142.PNG" class="d-block w-100" alt="Imagem 142">
+
+
+<!--VIDEOAULAS----------------------------------------------------------------->
+
+<h2 class="mt-5 text-center">VIDEOAULAS:</h2>
+
+<p>Seleção de videoaulas sobre esse assunto com ótimos professores que os ofertam gratuitamente na internet:</p>
+
+<div class="container mt-5 text-center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/TnbP-oYFMXI?si=31w_9D23frSE9GNl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/Y_gD7S6OkC4?si=hosoh57MTo_g4PtD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/zJ0YjUMEfjI?si=hbY8z2pDszLk4Cfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+
+<!--QUESTOES-------------------------------------------------------------------->
+
+
+<h2 class="mt-5 text-center">QUESTÕES:</h2>
+  <p class="text-align">1. (Enem 2013) Uma cozinheira, especialista em fazer bolos, utiliza uma forma no formato representado na figura:   </p>
+ <img src="img/img143.PNG" class="d-block w-100" alt="Imagem 143">
+<p>Nela identifica-se a representação de duas figuras geométricas tridimensionais. Essas figuras são:</p>
+<br>
+<p>A) um tronco de cone e um cilindro.</p>
+<p>B) um cone e um cilindro.</p>
+<p>C) um tronco de pirâmide e um cilindro.</p>
+<p>D) dois troncos de cone.</p>
+<p>E) dois cilindros.</p>
+
+<br>
+    <p>2. (Enem 2016) Em regiões agrícolas, é comum a presença de silos para armazenamento e secagem da produção de grãos, no formato de um cilindro reto, sobreposto por um cone, e dimensões indicadas na figura. O silo fica cheio e o transporte dos grãos é feito em caminhões de carga cuja capacidade é de 20 m³. Uma região possui um silo cheio e apenas um caminhão para transportar os grãos para a usina de beneficiamento.</p>
+<img src="img/img144.PNG" class="d-block w-100" alt="Imagem 144">
+<p>Utilize 3 como aproximação para π. </p>
+<p>O número mínimo de viagens que o caminhão precisará fazer para transportar todo o volume de grãos armazenados no silo é</p>
+
+<p>A) 6. </p>
+<p>B) 16. </p>
+<p>C) 17. </p>
+<p>D) 18. </p>
+<p>E) 21.</p>
+
+   
+<h2 class="mt-5 text-center">GABARITO:</h2>
+<i>1. Letra D</i>
+<p>Note que os dois sólidos possuem uma base maior e uma base maior circular, o que faz com que ambas sejam troncos de cone
+</p>
+
+<i>2. letra D</i>
+<p>Inicialmente, calcularemos o volume de um silo, que é composto por um cilindro e um cone.</p>
+
+<p class = "text-center">Vcilindro = πr²h</p>
+<p class = "text-center">Vcilindro = π ⸳ 3² ⸳ 12</p>
+<p class = "text-center">Vcilindro = π ⸳ 9 ⸳ 12</p>
+<p class = "text-center">Vcilindro = 108π</p>
+<p>Agora, calcularemos o volume do cone.</p>
+<img src="img145.PNG" class="d-block w-100" alt="Imagem 145">    
+<p>Utilizando π = 3 e somando o volume do cilindro ocm o do cone, temos que:</p>
+<p class = "text-center">Vsilo = 9 ⸳ 3 + 108 ⸳ 3 = 351 m³</p>
+<p>O caminhão leva 20 m³ por viagem, então o número de viagens necessárias é calculado pela divisão</p>
+<p class = "text-center">35 : 20 = 17,55</p>
+<p>Serão necessárias, portanto, 18 viagens.</p>
+
+
+  <!-- Rodapé -->
+   <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase fw-bold fst-italic">PICLASS</h5>
+                    <p> Melhor isolado de matemática! </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">links úteis</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.instagram.com/plataformapiclass/" class="text-dark">Instagram</a></li>
+                        <li><a href="sobrenos.html" class="text-dark">Sobre Nós</a></li>
+                    </ul>
+                </div>
+                <div class="col"></div>
+                <div class="col-md-auto">
+                    <h5 class="text-uppercase">Converse conosco:</h5>
+                    <ul class="list-unstyled">
+                      <li> contato.piclass@gmail.com</li>
+            
+                    </ul>
+                </div>
+            </div>  
+        </div>
+        <div class="text-center p-3 bg-dark text-white">
+            © 2025 Piclass. Todos os direitos reservados.
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  // Inicialização manual opcional (troca a cada 5s)
+    const el = document.querySelector('#bannerpiclass');
+    const carousel = new bootstrap.Carousel(el, { interval: 5000 });
+ 
+  // Seleciona todos os blocos com atributo data-link
+  document.querySelectorAll('[data-link]').forEach(bloco => {
+    bloco.addEventListener('click', () => {
+      const destino = bloco.getAttribute('data-link');
+      window.location.href = destino;
+    });
+  });
+  // Alternância de modo escuro 
+    const toggleBtn = document.getElementById("toggleModo");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent = 
+        document.body.classList.contains("dark-mode") 
+        ? "☀️ Modo Claro" 
+        : "🌙 Modo Escuro";
+    });
+</script>
+</body>
+</html>
